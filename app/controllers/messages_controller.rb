@@ -6,7 +6,12 @@ class MessagesController < ApplicationController
     @message = @chat.messages.new(message_params.merge(user: current_user))
     if @message.save
       respond_to do |format|
-        format.turbo_stream
+        format.turbo_stream do
+          @message.broadcast_append_to "chat_#{@chat.id}",
+                                       target: "messages_chat_#{@chat.id}",
+                                       partial: "messages/message",
+                                       locals: { message: @message, broadcast: true }
+        end
         format.html { redirect_to @chat }
       end
     else
@@ -14,6 +19,15 @@ class MessagesController < ApplicationController
     end
   end
 
+  def show
+    @user = current_user
+    @message = Message.find(params[:id])
+
+    respond_to do |format|
+      format.turbo_stream { render partial: 'messages/message', locals: { message: @message, user: @user } }
+      format.html { render partial: 'messages/message', locals: { message: @message, user: @user } }
+    end
+  end
 
   private
 
