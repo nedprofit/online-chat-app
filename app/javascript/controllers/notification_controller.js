@@ -19,7 +19,7 @@ export default class extends Controller {
 
         this.contentTimeout = setTimeout(() => {
             this.notificationTarget.classList.add("hidden");
-        }, 5000); // скрывать через 5 секунд
+        }, 3000); // скрывать через 5 секунд
     }
 
     closeNotification() {

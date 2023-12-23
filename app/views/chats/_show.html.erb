@@ -5,8 +5,8 @@
       <%= image_tag (current_user.avatar.attached? ? current_user.avatar : "shiba.png"), class: "h-10 w-10 rounded-full object-cover object-center ring ring-white" %>
     </div>
     <div class="ml-4">
-      <p class="text-grey-darkest">
-        <%= @chat.title %>
+      <p class="text-gray-400">
+        <%= @chat.description %>
       </p>
     </div>
   </div>

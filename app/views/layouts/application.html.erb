@@ -13,10 +13,9 @@
 
 <body>
 
-<div id="flash_notifications">
+<div class="z-50  space-y-2 end-4 fixed bottom-4" id="flash_notifications">
   <%= render partial: "layouts/flash" %>
 </div>
-
 <%= turbo_frame_tag "turboModal" do %>
   <%= render ModalComponent.new %>
 <% end %>

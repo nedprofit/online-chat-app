@@ -1,0 +1,57 @@
+<div class="mx-auto max-w-7xl lg:flex lg:gap-x-16 lg:px-8">
+  <aside class="flex overflow-x-auto border-b border-gray-900/5 py-4 lg:block lg:w-64 lg:flex-none lg:border-0 lg:py-20">
+    <nav class="flex-none px-4 sm:px-6 lg:px-0">
+      <ul role="list" class="flex gap-x-3 gap-y-1 whitespace-nowrap lg:flex-col">
+        <li>
+          <a href="#" class="bg-gray-50 text-indigo-600 group flex gap-x-3 rounded-md py-2 pl-2 pr-3 text-sm leading-6 font-semibold">
+            <svg class="h-6 w-6 shrink-0 text-indigo-600" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <%= t(:label_public_info) %>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+
+  <main class="px-4 py-16 sm:px-6 lg:flex-auto lg:px-0 lg:py-20">
+    <div class="mx-auto max-w-2xl space-y-16 sm:space-y-20 lg:mx-0 lg:max-w-none">
+      <div>
+        <h2 class="text-base font-semibold leading-7 text-gray-900">
+          <%= t(:label_public_info) %>
+        </h2>
+        <p class="mt-1 text-sm leading-6 text-gray-500">
+          <%= t(:label_public_info_description) %>
+        </p>
+
+        <%= form_with(model: @user, html: { method: :put }) do |form| %>
+          <dl class="mt-6 space-y-3  border-t border-gray-200 text-sm leading-6">
+            <div class="pt-4">
+              <%= form.label t(:label_avatar), class: "block text-sm font-medium leading-6 text-gray-900" %>
+              <div class="mt-2">
+                <%= form.file_field :avatar %>
+              </div>
+            </div>
+            <!-- Email -->
+            <div class="pt-6">
+              <%= form.label t(:label_email), class: "block text-sm font-medium leading-6 text-gray-900" %>
+              <div class="mt-2">
+                <%= form.email_field :email, class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6", placeholder: "you@example.com" %>
+              </div>
+              <p class="mt-2 text-sm text-gray-500" id="email-description">
+                <%= t(:label_trust) %>
+              </p>
+            </div>
+          </dl>
+
+          <!-- Другие поля и кнопка submit -->
+          <%= form.submit t(:button_save), class: "mt-4 rounded bg-indigo-600 px-2 py-1 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+        <% end %>
+
+      </div>
+
+    </div>
+  </main>
+</div>
+
+
