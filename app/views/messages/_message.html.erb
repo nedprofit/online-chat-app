@@ -1,3 +1,13 @@
-<div class="message">
-  <p><strong><%= message.user.email %>:</strong> <%= message.body %></p>
+<div class="flex <%= "justify-end" if message.user == current_user %> mb-2">
+  <div class="rounded py-2 px-3 <%= (message.user == current_user) ? "bg-[#E2F7CB]" : "bg-[#F2F2F2]" %>">
+    <p class="text-sm text-purple">
+      <%= message.user.email %>
+    </p>
+    <p class="text-sm mt-1">
+      <%= message.body %>
+    </p>
+    <p class="text-right text-xs text-grey-dark mt-1">
+      <%= message.created_at.strftime("%I:%M %p") %>
+    </p>
+  </div>
 </div>

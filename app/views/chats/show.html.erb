@@ -1,10 +1,10 @@
 <h1><%= @chat.title %></h1>
 
-<div id="messages">
+<div id="messages" class="flex space-y-3">
   <%= render @chat.messages %>
 </div>
 
-<%= form_with(model: [@chat, Message.new], local: true) do |form| %>
+<%= form_with(model: [@chat, Message.new], local: true, class: "flex items-end") do |form| %>
   <%= form.text_area :body %>
   <%= form.submit "Отправить" %>
 <% end %>
