@@ -23,6 +23,7 @@ ru:
   label_sign_in_account: "У вас уже есть аккаунт?"
   label_sign_in: "Войдите в него"
   label_log_out: "Выйти"
+  label_log_in: "Войти"
   label_settings: "Настройки"
   label_avatar: "Аватарка"
   label_public_info: "Публичная информация"

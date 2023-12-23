@@ -1,41 +1,58 @@
 require 'rails_helper'
 
-RSpec.describe UsersController, type: :controller do
-  let(:user) { create(:user) }
+RSpec.describe ChatsController, type: :controller do
+  let(:user) { FactoryBot.create(:user) }
+  let(:valid_attributes) { { title: 'Test Chat', description: 'This is a test chat.' } }
+  let(:invalid_attributes) { { title: '', description: '' } }
 
   before do
     sign_in user
   end
 
-  describe 'GET #edit' do
+  describe 'GET #index' do
     it 'returns a success response' do
-      get :edit, params: { id: user.to_param }
+      Chat.create! valid_attributes
+      get :index
       expect(response).to be_successful
     end
   end
 
-  describe 'PUT #update' do
+  describe 'GET #show' do
+    it 'returns a success response' do
+      chat = Chat.create! valid_attributes
+      get :show, params: { id: chat.to_param }
+      expect(response).to be_successful
+    end
+  end
+
+  describe 'GET #new' do
+    it 'returns a success response' do
+      get :new
+      expect(response).to be_successful
+    end
+  end
+
+  describe 'POST #create' do
     context 'with valid params' do
-      let(:new_attributes) { { email: 'newemail@example.com' } }
-
-      it 'updates the requested user' do
-        put :update, params: { id: user.to_param, user: new_attributes }
-        user.reload
-        expect(user.email).to eq('newemail@example.com')
-      end
-
-      it 'redirects to the user' do
-        put :update, params: { id: user.to_param, user: new_attributes }
-        expect(response).to redirect_to(user_path)
+      it 'creates a new Chat' do
+        expect {
+          post :create, params: { chat: valid_attributes }, format: :turbo_stream
+        }.to change(Chat, :count).by(1)
       end
     end
 
     context 'with invalid params' do
-      it 'returns a success response (i.e., to display the edit template)' do
-        put :update, params: { id: user.to_param, user: { email: 'invalidemail' } }, format: :turbo_stream
-        expect(response).to be_successful # ожидается рендеринг :edit
+      it 'does not create a new Chat' do
+        expect {
+          post :create, params: { chat: invalid_attributes }, format: :turbo_stream
+        }.to change(Chat, :count).by(0)
+      end
+
+      it 'renders a turbo_stream response for failed create' do
+        post :create, params: { chat: invalid_attributes }, format: :turbo_stream
+        expect(response.content_type).to eq('text/vnd.turbo-stream.html; charset=utf-8')
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
-
 end
