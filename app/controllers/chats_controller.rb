@@ -40,7 +40,12 @@ class ChatsController < ApplicationController
         format.turbo_stream
       end
     else
-      render :new
+      flash.now[:error] = Array.wrap(@chat).map { |tmpIssue| tmpIssue.errors.full_messages }.join
+      respond_to do |format|
+        format.turbo_stream do
+          render :failed_create, status: :unprocessable_entity
+        end
+      end
     end
   end
 
