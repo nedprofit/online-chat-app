@@ -28,3 +28,5 @@ en:
   label_trust: "We trust you and believe that you have provided a real"
   label_update_suсcess: "The update was successful"
   label_update_failed: "An error occurred during the update"
+  label_chats: "Chats"
+  label_public_info: "Public info"
