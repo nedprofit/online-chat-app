@@ -22,3 +22,5 @@ ru:
   label_sign_up_connect: "Подключитесь с помощью"
   label_sign_in_account: "У вас уже есть аккаунт?"
   label_sign_in: "Войдите в него"
+  label_log_out: "Выйти"
+  label_settings: "Настройки пользователя"

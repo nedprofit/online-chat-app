@@ -11,6 +11,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[7.1]
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
 
+      t.string :language, limit: 2, default: 'ru'  # 'ru' as default language
+
       ## Rememberable
       t.datetime :remember_created_at
 

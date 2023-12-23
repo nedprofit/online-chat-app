@@ -7,4 +7,12 @@ class User < ApplicationRecord
   has_many :messages
 
   has_one_attached :avatar
+
+  after_initialize :set_default_language, if: :new_record?
+
+  private
+
+  def set_default_language
+    self.language ||= 'ru'
+  end
 end
