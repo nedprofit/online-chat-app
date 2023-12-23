@@ -12,11 +12,14 @@
 </head>
 
 <body>
+
+<div id="flash_notifications">
+  <%= render partial: "layouts/flash" %>
+</div>
+
 <%= turbo_frame_tag "turboModal" do %>
   <%= render ModalComponent.new %>
 <% end %>
-
-
 
 <div class="flex flex-col w-full">
   <%= render partial: 'layouts/header' if user_signed_in? %>
