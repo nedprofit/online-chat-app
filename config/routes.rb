@@ -8,4 +8,10 @@ Rails.application.routes.draw do
   resources :chats, only: [:index, :new, :create, :show] do
     resources :messages, only: [:create, :show]
   end
+
+  namespace :api do
+    resources :chats, only: [:index] do
+      resources :messages, only: [:create]
+    end
+  end
 end

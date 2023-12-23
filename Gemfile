@@ -23,8 +23,12 @@ gem "stimulus-rails" # Hotwire's modest JavaScript framework [https://stimulus.h
 gem "tailwindcss-rails" # Use Tailwind CSS [https://github.com/rails/tailwindcss-rails]
 gem 'view_component' # View component framework
 
+# Backend
 gem 'devise'
 gem 'pagy'
+gem 'rack-attack'
+gem 'rails-i18n', '~> 7.0.0'
+
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 

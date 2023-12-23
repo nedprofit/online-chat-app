@@ -4,6 +4,8 @@ class Message < ApplicationRecord
 
   after_create_commit :send_notification
 
+  private
+
   def send_notification
     ActionCable.server.broadcast "notifications", {
       chat_name: self.chat.title,
