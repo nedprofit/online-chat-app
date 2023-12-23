@@ -21,7 +21,7 @@
             <div class="py-3 px-4">
               <div class="flex items-center gap-3">
                 <div class="relative h-10 w-10">
-                  <%= image_tag (current_user.avatar.attached? ? current_user.avatar : "shiba.png"), class: "h-10 w-10 rounded-full object-cover object-center ring ring-white" %>
+                  <%= image_tag (current_user.avatar.attached? ? current_user.avatar : "shiba.png"), class: "h-10 w-10 rounded-full" %>
                 </div>
                 <div class="text-sm">
                   <div class="text-gray-400"><%= current_user.email %></div>
@@ -35,14 +35,6 @@
                 </svg>
                 <%= t(:label_settings) %>
               <% end %>
-            </div>
-            <div class="p-1">
-              <a href="#" class="flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-4 w-4">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"/>
-                </svg>
-                API
-              </a>
             </div>
             <div class="p-1">
               <%= button_to destroy_user_session_path, method: :delete, class: "flex w-full items-center gap-2 rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100" do %>

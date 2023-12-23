@@ -3,7 +3,7 @@
      class="bg-white px-3 flex items-center hover:bg-grey-lighter cursor-pointer">
   <div>
     <% if chat.messages.present? %>
-      <%= image_tag (chat.messages.last.user.avatar.attached? ? current_user.avatar : "shiba.png"), class: "h-12 w-12 rounded-full" %>
+      <%= image_tag (chat.messages.last.user.avatar.attached? ? chat.messages.last.user.avatar : "shiba.png"), class: "h-12 w-12 rounded-full" %>
     <% else %>
       <%= image_tag "shiba.png", class: "h-12 w-12 rounded-full" %>
     <% end %>
