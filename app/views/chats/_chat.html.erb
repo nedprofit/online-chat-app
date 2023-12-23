@@ -1,0 +1,25 @@
+<div data-controller="chat-content"
+     data-url="<%= chat_path(chat) %>" data-action="click->chat-content#openChatContent"
+     class="draft__nav flex border-l space-x-3 border-b bg-white">
+  <div class="flex-grow space-y-3 p-2">
+    <div class="text-[13px] px-3 flex flex-row text-gray-800">
+      <div class="ml-2 font-normal"><%= chat.title %></div>
+    </div>
+    <div>
+      <% if chat.description.present? %>
+        <span class="draft__nav-label inline-flex items-center gap-1.5 py-0.5 px-3 rounded
+        -full text-[11px] font-medium bg-gray-100 text-gray-800">
+          <%= chat.description %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+  <div class="flex justify-end p-2">
+    <div class="absolute text-xs flex items-start justify-end text-gray-800">
+    </div>
+
+    <div class="flex items-end text-xs text-gray-800">
+      <%= time_ago_in_words(chat.updated_at) %> <%= t(:label_time_ago) %>
+    </div>
+  </div>
+</div>

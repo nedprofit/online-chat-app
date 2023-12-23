@@ -1,26 +1,51 @@
-<h2>Log in</h2>
-
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+  <div class="flex min-h-screen items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
+    <div class="w-full max-w-sm space-y-10">
+      <div>
+        <%= image_tag "logo.png", class: "mx-auto h-10 w-auto"  %>
+        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <%= t(:label_sign_in_header) %>
+        </h2>
+      </div>
+      <form class="space-y-6" action="#" method="POST">
+        <div class="relative -space-y-px rounded-md shadow-sm">
+          <div class="pointer-events-none absolute inset-0 z-10 rounded-md ring-1 ring-inset ring-gray-300"></div>
+          <div>
+            <label for="email-address" class="sr-only"></label>
+            <%= f.email_field :email, autofocus: true, placeholder: t(:label_email), autocomplete: "email", class: "relative block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+          </div>
+          <div>
+            <label for="password" class="sr-only"><%= t(:label_password) %></label>
+            <%= f.password_field :password, autocomplete: "current-password", placeholder: t(:label_password), class: "relative block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-100 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+          </div>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <div class="flex items-center justify-between">
+          <div class="flex items-center">
+            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600">
+            <label for="remember-me" class="ml-3 block text-sm leading-6 text-gray-900">
+              <%= t(:label_remember_me) %>
+            </label>
+          </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="text-sm leading-6">
+            <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">
+              <%= t(:label_forgot_password) %>
+            </a>
+          </div>
+        </div>
+
+        <div>
+          <%= f.submit "Log in", class: "flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+        </div>
+      </form>
+
+      <p class="text-center text-sm leading-6 text-gray-500">
+        <%= t(:label_not_member) %>
+        <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-500">
+          <%= t(:label_register) %>
+        </a>
+      </p>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>

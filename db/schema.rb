@@ -44,6 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_22_145948) do
 
   create_table "chats", force: :cascade do |t|
     t.string "title"
+    t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
